@@ -1,74 +1,40 @@
 import java.util.Scanner;
 
-
 public class Main {
+
     public static void main(String[] args) {
 
-        // Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
-        /*
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Pls input number of triangle: ");
-        int n = scan.nextInt();
-        int res = 0;
-        for(int i = 1; i <= n; i++)
-            res += i;
-        System.out.println(res);
-        **/
+        // Дана последовательность целых чисел, оканчивающаяся нулем.
+        // Найти сумму положительных чисел, после которых следует отрицательное число.
 
-        // Вывести все простые числа от 1 до 1000
-        /*
-        int n = 1000;
-        System.out.println("2");
-        for (int i = 2; i <= 1000; i++) {
-            boolean isPrime = i > 2;
-            for (int j = 2; j < i; j++) {
-                if(i % j == 0){ isPrime = false;
-                    break;
-                }
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        int prev = scanner.nextInt();
+        while (prev != 0) {
+            int curr = scanner.nextInt();
+            if (prev > 0 && curr < 0) {
+                sum += prev;
             }
-            if(isPrime)
-                System.out.println(i);
-        **/
-
-        // Реализовать простой калькулятор
-        /*
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Input 1st number: ");
-        double num1 = scan.nextInt();
-
-        System.out.print("Input 2nd number: ");
-        double num2 = scan.nextInt();
-
-        System.out.print("Input action");
-        String action = scan.nextLine();
-        action = scan.nextLine();
-
-        double res;
-
-        switch (action){
-            case "+":
-                res = num1 + num2;
-                System.out.println("result: " + res);
-                break;
-            case "-":
-                res = num1 - num2;
-                System.out.println("result: " + res);
-                break;
-            case "*":
-                res = num1 * num2;
-                System.out.println("result: " + res);
-                break;
-            case "/":
-                if (num2 == 0)
-                    System.out.println("Error");
-                else {
-                    res = num1 / num2;
-                    System.out.println("result: " + res);
-                }
-                break;
-            default:
-                System.out.println("Wrong input");
+            prev = curr;
         }
-        **/
+        System.out.println("Result: " + sum);
+
+
+        // Leetcode task
+
+        String s = "the sky is blue";
+        String reverseString = reverseWords(s);
+        System.out.println(reverseString);
     }
+    public static String reverseWords(String s) {
+        String[] words = s.trim().split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            sb.append(words[i]).append(" ");
+        }
+        return sb.toString().trim();
+    }
+
+
+
 }
